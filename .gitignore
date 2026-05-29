@@ -1,0 +1,15 @@
+*.tmp
+*.log
+*.bak
+~$*.pptx
+~$*.docx
+~$*.xlsx
+.DS_Store
+Thumbs.db
+.env
+.env.*
+node_modules/
+dist/
+build/
+.vercel/
+.netlify/

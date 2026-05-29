@@ -1,0 +1,25 @@
+name: Improve material
+description: Suggest a clearer example, guide, worksheet, or template.
+title: "Improve: "
+labels: ["improvement", "learning-material"]
+body:
+  - type: input
+    id: file
+    attributes:
+      label: Which file or section?
+      placeholder: episodes/01-implement-harness-engineering/beginner-guide.md
+    validations:
+      required: false
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is confusing or missing?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: A rough idea is enough.
+    validations:
+      required: false

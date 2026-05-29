@@ -1,0 +1,19 @@
+name: Beginner question
+description: Ask a question about harness engineering or the materials.
+title: "Question: "
+labels: ["question", "beginner-friendly"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: What are you trying to understand?
+      description: Plain language is perfect.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Your context
+      description: Tell us your domain or task if it helps.
+    validations:
+      required: false
