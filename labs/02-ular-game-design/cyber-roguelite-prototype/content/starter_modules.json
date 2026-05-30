@@ -1,0 +1,58 @@
+[
+  {
+    "id": "stock_head",
+    "slot": "head",
+    "name": "Stock Sensor",
+    "summary": "Baseline steering optics.",
+    "tradeoff": "No bonus."
+  },
+  {
+    "id": "targeting_reticle",
+    "slot": "head",
+    "name": "Targeting Reticle",
+    "summary": "+1 score per food.",
+    "tradeoff": "Shorter starting body."
+  },
+  {
+    "id": "stock_core",
+    "slot": "core",
+    "name": "Stock Core",
+    "summary": "Reliable base reactor.",
+    "tradeoff": "No shield."
+  },
+  {
+    "id": "reactive_shield_core",
+    "slot": "core",
+    "name": "Reactive Shield Core",
+    "summary": "Blocks one fatal collision per run.",
+    "tradeoff": "Starts longer and harder to steer."
+  },
+  {
+    "id": "stock_spine",
+    "slot": "spine",
+    "name": "Stock Spine",
+    "summary": "Stable movement cadence.",
+    "tradeoff": "No speed bonus."
+  },
+  {
+    "id": "overclock_spine",
+    "slot": "spine",
+    "name": "Overclock Spine",
+    "summary": "+1 score per food.",
+    "tradeoff": "Run speed increases."
+  },
+  {
+    "id": "stock_tail",
+    "slot": "tail",
+    "name": "Stock Tail",
+    "summary": "Plain tail assembly.",
+    "tradeoff": "No scrap bonus."
+  },
+  {
+    "id": "scrap_magnet_tail",
+    "slot": "tail",
+    "name": "Scrap Magnet Tail",
+    "summary": "Doubles scrap earned from score.",
+    "tradeoff": "Starts one segment longer."
+  }
+]
