@@ -87,6 +87,7 @@ class GameState:
     ticks: int = 0
     loadout: dict[str, str] = field(default_factory=dict)
     modifiers: RunModifiers = field(default_factory=RunModifiers)
+    speed_fps: int = 8
     shield_charges: int = 0
     growth_pending: int = 0
     hazards: list[HazardPatch] = field(default_factory=list)
@@ -97,3 +98,4 @@ class GameState:
     rewards_taken: list[str] = field(default_factory=list)
     next_reward_score: int = 6
     status_message: str = "Choose loadout, then launch."
+    developer_mode: bool = False

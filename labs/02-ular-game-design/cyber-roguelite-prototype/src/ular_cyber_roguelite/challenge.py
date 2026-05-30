@@ -7,9 +7,11 @@ from .config import GameConfig
 from .domain import BossState, GamePhase, GameState, HazardPatch, HazardPhase, Point, RewardChoice
 
 
-REWARD_INTERVAL = 6
-BOSS_SCORE_THRESHOLD = 12
+REWARD_INTERVAL = 8
+BOSS_SCORE_THRESHOLD = 8
 BOSS_MAX_HP = 3
+HAZARD_WARNING_TICKS = 4
+HAZARD_ACTIVE_TICKS = 4
 
 REWARD_POOL: tuple[RewardChoice, ...] = (
     RewardChoice(
@@ -69,13 +71,13 @@ def advance_challenge(state: GameState, config: GameConfig, rng: random.Random) 
     if state.phase != GamePhase.RUNNING:
         return
 
-    state.heat_level = max(state.heat_level, min(6, state.score // 5 + state.ticks // 180))
+    state.heat_level = max(state.heat_level, min(6, state.score // 7 + state.ticks // 240))
     state.hazards = _advance_hazards(state.hazards)
 
     if state.score >= BOSS_SCORE_THRESHOLD and not state.boss_defeated and state.boss is None:
         spawn_boss(state, config, rng)
 
-    interval = max(6, 22 - state.heat_level * 3)
+    interval = max(10, 34 - state.heat_level * 3)
     if state.ticks % interval == 0:
         spawn_hazard(state, config, rng)
 
@@ -87,7 +89,7 @@ def spawn_hazard(state: GameState, config: GameConfig, rng: random.Random) -> Ha
 
     patch_size = min(len(cells), 1 + state.heat_level // 2)
     selected = tuple(rng.sample(cells, patch_size))
-    hazard = HazardPatch(cells=selected, phase=HazardPhase.WARNING, ticks_remaining=2)
+    hazard = HazardPatch(cells=selected, phase=HazardPhase.WARNING, ticks_remaining=HAZARD_WARNING_TICKS)
     state.hazards.append(hazard)
     state.status_message = "Hazard warning: move before it arms."
     return hazard
@@ -184,6 +186,6 @@ def _advance_hazards(hazards: list[HazardPatch]) -> list[HazardPatch]:
             continue
 
         if hazard.phase == HazardPhase.WARNING:
-            advanced.append(HazardPatch(cells=hazard.cells, phase=HazardPhase.ACTIVE, ticks_remaining=3))
+            advanced.append(HazardPatch(cells=hazard.cells, phase=HazardPhase.ACTIVE, ticks_remaining=HAZARD_ACTIVE_TICKS))
 
     return advanced

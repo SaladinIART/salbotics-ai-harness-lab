@@ -12,6 +12,8 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from ular_cyber_roguelite.config import GameConfig
 from ular_cyber_roguelite.challenge import (
+    BOSS_SCORE_THRESHOLD,
+    HAZARD_WARNING_TICKS,
     apply_reward_choice,
     damage_boss,
     spawn_boss,
@@ -36,6 +38,7 @@ from ular_cyber_roguelite.modules import (
 from ular_cyber_roguelite.profile import (
     cycle_profile_slot,
     default_profile,
+    adjust_speed,
     load_profile,
     record_run,
     save_profile,
@@ -230,7 +233,7 @@ class SystemTests(unittest.TestCase):
         self.assertEqual(len(state.snake.body), 4)
 
     def test_overclock_spine_changes_current_fps(self) -> None:
-        config = GameConfig(fps=10)
+        config = GameConfig(fps=8)
         catalog = default_module_catalog()
         loadout = default_loadout()
         loadout[ModuleSlot.SPINE.value] = "overclock_spine"
@@ -242,7 +245,13 @@ class SystemTests(unittest.TestCase):
             loadout,
         )
 
-        self.assertEqual(current_fps(config, state), 13)
+        self.assertEqual(current_fps(config, state), 11)
+
+    def test_custom_speed_changes_current_fps(self) -> None:
+        config = GameConfig(fps=8)
+        state = create_initial_state(config, random.Random(1), GamePhase.RUNNING, speed_fps=12)
+
+        self.assertEqual(current_fps(config, state), 12)
 
 
 class ProfileTests(unittest.TestCase):
@@ -250,6 +259,7 @@ class ProfileTests(unittest.TestCase):
         catalog = default_module_catalog()
         profile = default_profile(catalog)
         profile.scrap = 12
+        profile.snake_speed_fps = 11
         profile.loadout[ModuleSlot.TAIL.value] = "scrap_magnet_tail"
 
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -258,7 +268,17 @@ class ProfileTests(unittest.TestCase):
             loaded = load_profile(path, catalog)
 
         self.assertEqual(loaded.scrap, 12)
+        self.assertEqual(loaded.snake_speed_fps, 11)
         self.assertEqual(loaded.loadout[ModuleSlot.TAIL.value], "scrap_magnet_tail")
+
+    def test_adjust_speed_clamps_to_playable_range(self) -> None:
+        profile = default_profile(default_module_catalog())
+
+        adjust_speed(profile, 99)
+        self.assertEqual(profile.snake_speed_fps, 18)
+
+        adjust_speed(profile, -99)
+        self.assertEqual(profile.snake_speed_fps, 5)
 
     def test_cycle_profile_slot_selects_next_module(self) -> None:
         catalog = default_module_catalog()
@@ -349,6 +369,7 @@ class ChallengeTests(unittest.TestCase):
 
         self.assertIsNotNone(hazard)
         self.assertEqual(hazard.phase, HazardPhase.WARNING)
+        self.assertEqual(hazard.ticks_remaining, HAZARD_WARNING_TICKS)
         self.assertTrue(set(hazard.cells).isdisjoint({(0, 0), (1, 0), (2, 0), (3, 0)}))
 
     def test_milestone_score_opens_reward_choice(self) -> None:
@@ -356,16 +377,32 @@ class ChallengeTests(unittest.TestCase):
         state = GameState(
             snake=Snake(body=[(3, 3), (2, 3), (1, 3)], direction=Direction.RIGHT),
             food=(4, 3),
-            score=5,
+            score=7,
             phase=GamePhase.RUNNING,
-            next_reward_score=6,
+            next_reward_score=8,
         )
 
         step(state, config, random.Random(2))
 
         self.assertEqual(state.phase, GamePhase.REWARD)
         self.assertEqual(len(state.reward_choices), 3)
-        self.assertEqual(state.next_reward_score, 12)
+        self.assertEqual(state.next_reward_score, 16)
+
+    def test_boss_spawns_before_reward_pauses_threshold_run(self) -> None:
+        config = GameConfig(grid_columns=8, grid_rows=8)
+        state = GameState(
+            snake=Snake(body=[(3, 3), (2, 3), (1, 3)], direction=Direction.RIGHT),
+            food=(4, 3),
+            score=BOSS_SCORE_THRESHOLD - 1,
+            phase=GamePhase.RUNNING,
+            next_reward_score=BOSS_SCORE_THRESHOLD,
+        )
+
+        step(state, config, random.Random(2))
+
+        self.assertEqual(state.phase, GamePhase.REWARD)
+        self.assertIsNotNone(state.boss)
+        self.assertEqual(state.boss.hp, 3)
 
     def test_reward_choice_applies_shield_and_resumes_run(self) -> None:
         state = GameState(

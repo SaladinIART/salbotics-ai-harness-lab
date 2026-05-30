@@ -30,6 +30,17 @@ CP5 implemented:
   hazards, boss damage, and reward choices.
 - No campaign RPG, territory strategy, online services, or asset pipeline yet.
 
+Post-CP5 gameplay upgrade:
+
+- Larger arena: 34 x 28 cells.
+- Slower default speed: 8 FPS, adjustable from 5-18.
+- Speed is saved in profile as `snake_speed_fps`.
+- Boss threshold lowered to score 8.
+- Challenge order changed so boss spawn happens before reward pause.
+- Hazard pacing softened: longer warning, slower pressure.
+- Developer mode toggled with `F1`; hotkeys are documented in
+  `docs/developer-mode.md`.
+
 ## Design Spine
 
 Primary direction: cyber-roguelite snake.

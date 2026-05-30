@@ -15,6 +15,8 @@ def create_initial_state(
     phase: GamePhase = GamePhase.READY,
     modifiers: RunModifiers | None = None,
     loadout: dict[str, str] | None = None,
+    speed_fps: int | None = None,
+    developer_mode: bool = False,
 ) -> GameState:
     rng = rng or random.Random()
     modifiers = modifiers or RunModifiers()
@@ -28,7 +30,9 @@ def create_initial_state(
         phase=phase,
         loadout=loadout or {},
         modifiers=modifiers,
+        speed_fps=speed_fps or config.fps,
         shield_charges=modifiers.shield_charges,
+        developer_mode=developer_mode,
     )
 
 
@@ -64,6 +68,8 @@ def start_or_restart(
     rng: random.Random | None = None,
     modifiers: RunModifiers | None = None,
     loadout: dict[str, str] | None = None,
+    speed_fps: int | None = None,
+    developer_mode: bool | None = None,
 ) -> GameState:
     if state.phase in {GamePhase.READY, GamePhase.GAME_OVER, GamePhase.WON}:
         return create_initial_state(
@@ -72,6 +78,8 @@ def start_or_restart(
             phase=GamePhase.RUNNING,
             modifiers=modifiers or state.modifiers,
             loadout=loadout or state.loadout,
+            speed_fps=speed_fps or state.speed_fps,
+            developer_mode=state.developer_mode if developer_mode is None else developer_mode,
         )
     return state
 
@@ -132,8 +140,8 @@ def step(state: GameState, config: GameConfig, rng: random.Random | None = None)
     else:
         state.snake.body.pop()
 
-    maybe_offer_reward(state, rng)
     advance_challenge(state, config, rng)
+    maybe_offer_reward(state, rng)
 
 
 def is_out_of_bounds(point: Point, config: GameConfig) -> bool:
@@ -143,7 +151,7 @@ def is_out_of_bounds(point: Point, config: GameConfig) -> bool:
 
 def current_fps(config: GameConfig, state: GameState) -> int:
     heat_bonus = max(0, state.heat_level // 2)
-    return max(4, config.fps + state.modifiers.fps_delta + heat_bonus)
+    return max(config.min_fps, min(config.max_fps, state.speed_fps + state.modifiers.fps_delta + heat_bonus))
 
 
 def _absorb_fatal_collision(state: GameState, remove_head: bool = False) -> bool:

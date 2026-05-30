@@ -13,6 +13,7 @@ Use this checklist for a 10-15 minute CP5 playtest.
 - Start screen appears without errors.
 - `Up` and `Down` select the four slots: head, core, spine, tail.
 - `Left` and `Right` cycle modules in each slot.
+- `[`/`]` or `-`/`+` changes saved base speed.
 - Module choices persist after restarting the app.
 - `Space` starts a run.
 
@@ -38,9 +39,19 @@ Use this checklist for a 10-15 minute CP5 playtest.
 - Active hazards are visually distinct and lethal.
 - Shield can absorb an active hazard.
 - Heat rises over time or score.
-- `Circuit Warden` appears after enough score.
+- `Circuit Warden` appears at about score 8.
 - Biting the boss damages it and moves it.
 - Defeating the boss opens reward choices.
+
+## Developer Mode
+
+- `F1` toggles developer mode.
+- `B` spawns the boss during a run.
+- `H` spawns a hazard.
+- `C` clears hazards.
+- `G` adds score.
+- `R` opens reward choices.
+- `V` adds shield.
 
 ## Rewards And End State
 
@@ -56,4 +67,3 @@ Use this checklist for a 10-15 minute CP5 playtest.
 - One complete run reaches or nearly reaches the boss.
 - Death feels explainable from visible state.
 - At least one module choice changes strategy.
-

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ular-cyber-roguelite"
-version = "0.5.0"
-description = "Playtested Pygame snake vertical slice with cybernetic modules, hazards, rewards, and handoff docs."
+version = "0.6.0"
+description = "Pygame snake vertical slice with speed tuning, developer mode, boss fixes, and roguelite systems."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

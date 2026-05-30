@@ -6,6 +6,7 @@ from .config import GameConfig
 from .domain import GamePhase, GameState, HazardPhase, Point
 from .modules import SLOT_ORDER, ModuleDefinition, ModuleSlot
 from .profile import PlayerProfile
+from .systems import current_fps
 
 
 LOADOUT_PHASES = {GamePhase.READY, GamePhase.GAME_OVER, GamePhase.WON}
@@ -88,21 +89,25 @@ class Renderer:
         self._blit("Cyber-Roguelite", self.font, self.config.text_color, x, 78)
         self._blit(f"Score: {state.score}", self.font, self.config.text_color, x, 134)
         self._blit(f"Length: {len(state.snake.body)}", self.font, self.config.text_color, x, 168)
-        self._blit(f"Heat: {state.heat_level}", self.font_small, self.config.warning_color, x, 204)
-        self._blit(f"Shield: {state.shield_charges}", self.font_small, self.config.muted_text_color, x, 228)
-        self._blit(f"State: {state.phase.value}", self.font_small, self.config.muted_text_color, x, 252)
+        self._blit(f"Speed: {state.speed_fps} base / {current_fps(self.config, state)} now", self.font_small, self.config.text_color, x, 202)
+        self._blit(f"Heat: {state.heat_level}", self.font_small, self.config.warning_color, x, 226)
+        self._blit(f"Shield: {state.shield_charges}", self.font_small, self.config.muted_text_color, x, 250)
+        self._blit(f"State: {state.phase.value}", self.font_small, self.config.muted_text_color, x, 274)
 
         boss_text = "Boss: defeated" if state.boss_defeated else "Boss: dormant"
         if state.boss is not None:
             boss_text = f"Boss: {state.boss.hp}/{state.boss.max_hp}"
-        self._blit(boss_text, self.font_small, self.config.boss_color, x, 278)
-        self._blit(_clip_text(state.status_message, 28), self.font_small, self.config.muted_text_color, x, 304)
+        self._blit(boss_text, self.font_small, self.config.boss_color, x, 298)
+        self._blit(_clip_text(state.status_message, 34), self.font_small, self.config.muted_text_color, x, 322)
+        if state.developer_mode:
+            self._blit("DEV: B boss H hazard G score R reward", self.font_small, self.config.warning_color, x, 346)
+            self._blit("DEV: V shield C clear F1 off", self.font_small, self.config.warning_color, x, 370)
 
         if profile and catalog:
-            self._draw_profile(profile, x, 336)
-            self._draw_loadout(state, catalog, selected_slot, x, 404)
+            self._draw_profile(profile, x, 382 if state.developer_mode else 350)
+            self._draw_loadout(state, catalog, selected_slot, x, 450 if state.developer_mode else 418)
             if last_scrap_earned:
-                self._blit(f"+{last_scrap_earned} scrap saved", self.font_small, self.config.warning_color, x, 548)
+                self._blit(f"+{last_scrap_earned} scrap saved", self.font_small, self.config.warning_color, x, 526)
 
         self._blit(_control_hint(state), self.font_small, self.config.muted_text_color, x, self.config.play_height - 28)
 
@@ -219,7 +224,9 @@ def _control_hint(state: GameState) -> str:
     if state.phase == GamePhase.REWARD:
         return "Choose: 1 / 2 / 3"
     if state.phase in LOADOUT_PHASES:
-        return "Select modules, Space launch"
+        return "Speed +/- | F1 dev | Space launch"
     if state.phase == GamePhase.PAUSED:
         return "P resume | Esc quit"
-    return "WASD turn | P pause"
+    if state.developer_mode:
+        return "WASD | B boss | H hazard | F1"
+    return "WASD turn | +/- speed | F1 dev"

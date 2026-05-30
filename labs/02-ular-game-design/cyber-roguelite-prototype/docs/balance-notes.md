@@ -3,10 +3,20 @@
 ## CP5 Targets
 
 - First run duration: 2-5 minutes.
-- First reward: around score 6.
-- Boss reveal: around score 12.
+- First reward: around score 8.
+- Boss reveal: around score 8.
 - Boss durability: 3 hits.
 - Hazards: readable warnings before lethal cells.
+
+## Post-CP5 Tuning
+
+- Default arena is now 34 x 28 cells.
+- Default speed is now 8 FPS.
+- Player can tune base speed from 5-18 FPS.
+- Hazard warning duration is longer.
+- Hazard pressure is slower, especially early.
+- Boss spawn now happens before reward pause, so it should no longer feel
+  missing at threshold.
 
 ## Current Balance Read
 
@@ -34,4 +44,3 @@ deaths that read as rules friction instead of player error.
 - Increase hazard warning duration if active hazards feel cheap.
 - Lower `fps_delta` on `Overclock Spine` if speed becomes too punishing.
 - Add a scrap sink only after playtesting confirms module choices are fun.
-

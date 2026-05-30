@@ -12,9 +12,9 @@ Transform the current snake-game idea into a cyber-roguelite vertical slice:
 short hard-but-fair runs, cybernetic module choices, escalating tactical arenas,
 and persistent progress that makes each failure feel earned.
 
-CP5 stabilizes the first vertical slice with playtest notes, balance targets,
-known issues, and handoff guidance. Campaign RPG and open-strategy layers are
-still parked for later work.
+Post-CP5 gameplay upgrade adds a larger arena, slower default pacing, saved
+speed customization, earlier boss appearance, and developer mode. Campaign RPG
+and open-strategy layers are still parked for later work.
 
 ## Source Attribution
 
@@ -45,6 +45,7 @@ cyber-roguelite-prototype/
 │   └── starter_modules.json
 ├── docs/
 │   ├── balance-notes.md
+│   ├── developer-mode.md
 │   ├── handoff.md
 │   ├── known-issues.md
 │   └── playtest-checklist.md
@@ -77,6 +78,9 @@ Controls:
 - Ready/game-over screen: `Left`/`Right` cycles module
 - During run: arrow keys or `WASD` change direction
 - Reward screen: `1`, `2`, or `3` chooses a reward
+- `[` or `-`: reduce snake speed
+- `]` or `+`: increase snake speed
+- `F1`: toggle developer mode
 - `P`: pause or resume
 - `Esc`: quit
 
@@ -106,6 +110,21 @@ ignored by Git so personal run data does not become project source.
   three times to defeat it.
 - Milestone rewards pause the run and let the player choose a short-term boost.
 
+## Speed And Developer Mode
+
+Speed is saved in `saves/profile.json`, with base speed clamped from `5` to
+`18`. Module and heat effects can still modify the current run speed.
+
+Developer mode:
+
+- `F1`: toggle developer mode.
+- `B`: spawn the boss during a run.
+- `H`: spawn a hazard during a run.
+- `C`: clear hazards.
+- `G`: add 1 score.
+- `R`: open reward choices during a run.
+- `V`: add 1 shield.
+
 ## CP5 Stabilization
 
 - Tail-safe movement now allows classic snake movement into a vacating tail
@@ -113,6 +132,15 @@ ignored by Git so personal run data does not become project source.
 - Balance targets are captured in `content/balance_targets.json`.
 - Playtest checklist, balance notes, known issues, and continuation handoff live
   in `docs/`.
+
+## Post-CP5 Gameplay Upgrade
+
+- Default arena expanded to `34 x 28`.
+- Default speed reduced to `8`.
+- Boss threshold reduced to score `8`.
+- Hazard warnings last longer and hazards spawn less aggressively.
+- Boss spawn now happens before reward pause, so the boss is visible when the
+  threshold is reached.
 
 ## Test
 

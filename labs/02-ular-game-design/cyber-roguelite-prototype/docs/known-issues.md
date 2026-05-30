@@ -10,6 +10,7 @@
 - Hazard placement is random and not authored into arenas.
 - UI is serviceable Pygame text, not final art direction.
 - There is no sound, animation polish, or accessibility settings.
+- Developer mode is intentionally simple and does not have an in-game menu yet.
 
 ## Not Bugs For CP5
 
@@ -24,4 +25,3 @@
 - Add authored arena patterns instead of purely random hazard cells.
 - Add a clearer boss telegraph and attack rhythm.
 - Add visual/audio feedback for shield burn, reward install, and boss hit.
-

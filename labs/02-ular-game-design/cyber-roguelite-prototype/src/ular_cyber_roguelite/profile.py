@@ -26,6 +26,7 @@ class PlayerProfile:
     total_runs: int = 0
     best_score: int = 0
     best_length: int = 0
+    snake_speed_fps: int = 8
     unlocked_modules: list[str] = field(default_factory=list)
     loadout: dict[str, str] = field(default_factory=default_loadout)
 
@@ -67,6 +68,7 @@ def load_profile(
         total_runs=max(0, int(raw.get("total_runs", 0))),
         best_score=max(0, int(raw.get("best_score", 0))),
         best_length=max(0, int(raw.get("best_length", 0))),
+        snake_speed_fps=max(5, min(18, int(raw.get("snake_speed_fps", 8)))),
         unlocked_modules=unlocked,
         loadout=normalize_loadout(raw.get("loadout", {}), catalog, set(unlocked)),
     )
@@ -97,3 +99,7 @@ def record_run(profile: PlayerProfile, state: GameState) -> int:
     profile.best_score = max(profile.best_score, state.score)
     profile.best_length = max(profile.best_length, len(state.snake.body))
     return earned_scrap
+
+
+def adjust_speed(profile: PlayerProfile, amount: int) -> None:
+    profile.snake_speed_fps = max(5, min(18, profile.snake_speed_fps + amount))

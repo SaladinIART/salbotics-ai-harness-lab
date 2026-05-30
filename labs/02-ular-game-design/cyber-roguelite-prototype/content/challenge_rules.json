@@ -1,18 +1,18 @@
 {
   "hazards": {
-    "warning_ticks": 2,
-    "active_ticks": 3,
+    "warning_ticks": 4,
+    "active_ticks": 4,
     "description": "Hazard cells are shown as warnings before becoming lethal."
   },
   "heat": {
     "max_level": 6,
-    "score_pressure": "score // 5",
-    "time_pressure": "ticks // 180",
+    "score_pressure": "score // 7",
+    "time_pressure": "ticks // 240",
     "description": "Heat increases hazard pressure and adds a small speed increase."
   },
   "boss": {
     "name": "Circuit Warden",
-    "score_threshold": 12,
+    "score_threshold": 8,
     "hp": 3,
     "score_reward_per_hit": 2,
     "description": "Bite the blue node to damage the miniboss. Defeating it opens reward choices."

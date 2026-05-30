@@ -1,9 +1,9 @@
 {
   "version": "0.5.0",
   "run_targets": {
-    "first_run_duration_minutes": "2-5",
-    "first_reward_score": 6,
-    "boss_score_threshold": 12,
+    "first_run_duration_minutes": "4-8",
+    "first_reward_score": 8,
+    "boss_score_threshold": 8,
     "boss_hp": 3,
     "reward_interval": 6
   },
@@ -14,9 +14,12 @@
     "suffering_quality": "Failure should feel harsh but learnable, not random."
   },
   "cp5_balance_changes": [
+    "Expanded arena to 34 x 28.",
+    "Reduced default base speed to 8 FPS and added saved speed customization.",
+    "Lowered boss threshold to score 8 and spawn boss before reward pause.",
+    "Softened early hazard pressure with longer warnings and slower spawns.",
     "Allowed movement into a vacating tail cell when the snake is not growing.",
     "Kept active hazards lethal but shield-absorbable.",
     "Kept rewards short-term so CP5 does not become a full upgrade tree."
   ]
 }
-

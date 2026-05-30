@@ -7,10 +7,12 @@ from dataclasses import dataclass
 class GameConfig:
     title: str = "Ular Cyber-Roguelite Prototype"
     cell_size: int = 24
-    grid_columns: int = 30
-    grid_rows: int = 24
-    side_panel_width: int = 320
-    fps: int = 10
+    grid_columns: int = 34
+    grid_rows: int = 28
+    side_panel_width: int = 340
+    fps: int = 8
+    min_fps: int = 5
+    max_fps: int = 18
 
     background_color: tuple[int, int, int] = (8, 12, 16)
     grid_color: tuple[int, int, int] = (32, 45, 54)

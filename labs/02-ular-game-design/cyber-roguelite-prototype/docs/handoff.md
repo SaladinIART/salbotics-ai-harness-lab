@@ -11,6 +11,7 @@ The prototype is a clean Python/Pygame rebuild with:
 - Local profile save.
 - Telegraphed hazards, heat scaling, milestone rewards, and Circuit Warden
   miniboss.
+- Saved speed customization and developer mode.
 - Tests for core logic, modules, profile, hazards, boss, and rewards.
 
 ## How To Verify
@@ -30,6 +31,7 @@ Start with playtest tuning before adding new systems:
 - Tune hazard warning and active durations.
 - Tune boss score threshold.
 - Decide whether scrap should unlock modules or reroll rewards.
+- Decide whether developer mode should become a proper debug overlay.
 
 ## Expansion Boundaries
 
@@ -42,4 +44,3 @@ Parked expansion path:
 - CP7: authored arenas and boss attack patterns.
 - CP8: campaign map prototype.
 - CP9: open strategy layer prototype.
-
