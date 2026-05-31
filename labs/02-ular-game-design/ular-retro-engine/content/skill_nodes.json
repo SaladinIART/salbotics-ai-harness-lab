@@ -1,0 +1,8 @@
+[
+  {
+    "id": "lab_power_budget_01",
+    "name": "Aux Power Bus",
+    "cost": 10,
+    "description": "+1 loadout power budget"
+  }
+]

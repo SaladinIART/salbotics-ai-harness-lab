@@ -1,16 +1,38 @@
 # Design Worksheet: Ular Game Design
 
+Use this worksheet before starting the next checkpoint after CP11.
+
+## Current Prototype
+
+```text
+Folder:
+C:\Users\salbot01\Salbotics\salbotics-ai-harness-lab\labs\02-ular-game-design\ular-retro-engine
+
+Current state:
+Pyxel CP11 roguelite loop with Lab, modules, hazards, boss, rewards, scrap, unlocks, and profile persistence.
+```
+
 ## Player Goal
 
-What should the player try to do?
+What should the player try to do in the next version?
+
+```text
+Example:
+Survive longer runs, defeat Circuit Warden more reliably, earn scrap, and tune
+the snake loadout in the Lab.
+```
+
+## Next Checkpoint Goal
+
+What is the smallest useful improvement?
 
 ```text
 
 ```
 
-## Core Rules
+## Feature Boundary
 
-What are the smallest rules needed for the first version?
+What is included?
 
 ```text
 1.
@@ -18,46 +40,53 @@ What are the smallest rules needed for the first version?
 3.
 ```
 
-## Controls
+What is excluded?
 
-How does the player control the snake?
+```text
+-
+-
+-
+```
+
+## Controls Or UI Changes
+
+Does the player need new controls, menus, or HUD text?
 
 ```text
 
 ```
 
-## Visual Style
+## Balance Questions
 
-What should the game feel like?
-
-```text
-
-```
-
-## Features to Exclude
-
-What tempting ideas must wait until later?
+What should feel easier, harder, clearer, or more rewarding?
 
 ```text
--
--
--
+Hazards:
+Boss:
+Rewards:
+Modules:
+Scrap:
+Speed:
 ```
 
 ## Playtest Checkpoints
 
 ```text
-1. Start works:
-2. Movement works:
-3. Food works:
-4. Score works:
-5. Collision works:
-6. Restart works:
+1. Title to Lab works:
+2. Lab loadout selection works:
+3. Run starts:
+4. Food/score/length works:
+5. Hazards are readable:
+6. Boss appears and can be damaged:
+7. Rewards can be selected:
+8. Death or clear grants progress:
+9. Profile save persists:
+10. Developer mode helps test quickly:
 ```
 
 ## Done Criteria
 
-What is "finished enough" for version 1?
+What is "finished enough" for this checkpoint?
 
 ```text
 

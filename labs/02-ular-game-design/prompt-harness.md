@@ -1,43 +1,63 @@
 # Prompt Harness: Ular Game Design
 
-Copy and adapt this prompt when building the future snake-game demo.
+Use this prompt when continuing the current Pyxel prototype or teaching how the
+project reached CP11.
 
 ```text
-I want to design a tiny browser snake game called "Ular yg Mengular".
+I want to continue the public-safe Ular Cyber-Roguelite prototype.
+
+Current folder:
+C:\Users\salbot01\Salbotics\salbotics-ai-harness-lab\labs\02-ular-game-design\ular-retro-engine
+
+Current checkpoint:
+CP11 is complete.
+
+Current game:
+- Pyxel-based Tactical Snake+ roguelite prototype.
+- Title, Lab, and Play scenes.
+- Body module slots: head, core, spine, tail.
+- Module definitions live in content/modules.json.
+- Lab lets the player cycle unlocked modules.
+- Runs include food, score, length, collision, hazards, reward choices, and Circuit Warden boss target.
+- Runs earn scrap, unlock modules, and persist profile data.
+- Developer mode supports boss, hazard, score, reward, shield, and clear hotkeys.
 
 Goal:
-Create a small playable first version for teaching harness engineering.
+Improve the game through one clear checkpoint at a time.
 
 Audience:
-Beginners who are learning how to use AI without drifting into too many features.
+Beginners learning harness engineering through a real game-design example.
 
-Core rules:
-- The snake moves on a grid.
-- The player changes direction.
-- Food increases score and snake length.
-- Hitting the wall or snake body ends the game.
-- The player can restart.
+Rules:
+- Preserve the current Pygame prototype as reference.
+- Work in ular-retro-engine unless the task says otherwise.
+- Keep changes checkpoint-sized.
+- Update README.md, GEMINI.md, ROADMAP.md, and smoke notes when behavior changes.
+- Add tests for deterministic systems.
+- Do not add private files, generated caches, or personal save data.
 
-Constraints:
-- Keep the first version small.
-- Do not add accounts, multiplayer, skins, story, or online leaderboard.
-- Use simple visuals.
-- Make the game playable on desktop first.
-
-Ask-before-build rule:
-Before writing code, ask up to 3 questions if the controls, screen size, or visual style are unclear.
-
-Checkpoints:
-After each major step, summarize what changed, what remains, and where risk is.
-
-Playtest checkpoints:
-1. Can the player start?
-2. Can the snake move and turn?
-3. Can the snake eat food?
-4. Does score update?
-5. Does collision end the game?
-6. Can the player restart?
+Good next checkpoints:
+1. Playtest and balance pass.
+2. Pixel sprite and palette pass.
+3. Audio cue pass.
+4. Web export trial.
+5. Additional biome and boss pass.
 
 Done criteria:
-The game is playable for 2 minutes, teaches scope control, and has clear notes for the next iteration.
+- The change is playable or verifiable.
+- Tests pass with python -m unittest discover -s tests.
+- Docs explain what changed and how to run it.
+- Existing unrelated files are not modified.
+```
+
+## Minimal Teaching Prompt
+
+For a classroom or beginner demo, use this shorter version:
+
+```text
+We have a Pyxel snake roguelite prototype at CP11.
+
+Please inspect the project first, then make one small improvement.
+Keep the checkpoint small, update docs, add tests if the logic changes, and
+explain how to verify it.
 ```

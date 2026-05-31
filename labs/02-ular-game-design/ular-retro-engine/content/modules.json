@@ -1,0 +1,94 @@
+[
+  {
+    "id": "head_stock_sensor",
+    "name": "Stock Sensor",
+    "slot": "head",
+    "tier": 1,
+    "power_cost": 1,
+    "heat_cost": 0,
+    "tags": ["starter", "score"],
+    "effects": [{"type": "score_per_food_delta", "amount": 0}]
+  },
+  {
+    "id": "head_targeting_reticle",
+    "name": "Targeting Reticle",
+    "slot": "head",
+    "tier": 1,
+    "power_cost": 2,
+    "heat_cost": 1,
+    "tags": ["score", "precision"],
+    "effects": [
+      {"type": "score_per_food_delta", "amount": 1},
+      {"type": "starting_length_delta", "amount": -1}
+    ]
+  },
+  {
+    "id": "core_reactive_shield",
+    "name": "Reactive Shield",
+    "slot": "core",
+    "tier": 1,
+    "power_cost": 2,
+    "heat_cost": 0,
+    "tags": ["shield", "survival"],
+    "effects": [
+      {"type": "shield_delta", "amount": 1},
+      {"type": "starting_length_delta", "amount": 1}
+    ]
+  },
+  {
+    "id": "core_light_battery",
+    "name": "Light Battery",
+    "slot": "core",
+    "tier": 1,
+    "power_cost": 1,
+    "heat_cost": -1,
+    "tags": ["starter", "heat"],
+    "effects": [{"type": "heat_rate_delta", "amount": -1}]
+  },
+  {
+    "id": "spine_overclock",
+    "name": "Overclock Spine",
+    "slot": "spine",
+    "tier": 1,
+    "power_cost": 2,
+    "heat_cost": 1,
+    "tags": ["speed", "risk"],
+    "effects": [
+      {"type": "speed_delta", "amount": 2},
+      {"type": "score_per_food_delta", "amount": 1}
+    ]
+  },
+  {
+    "id": "spine_stabilizer",
+    "name": "Stabilizer Spine",
+    "slot": "spine",
+    "tier": 1,
+    "power_cost": 1,
+    "heat_cost": -1,
+    "tags": ["starter", "control"],
+    "effects": [{"type": "speed_delta", "amount": -1}]
+  },
+  {
+    "id": "tail_scrap_magnet",
+    "name": "Scrap Magnet",
+    "slot": "tail",
+    "tier": 1,
+    "power_cost": 2,
+    "heat_cost": 0,
+    "tags": ["scrap", "economy"],
+    "effects": [
+      {"type": "scrap_multiplier_delta", "amount": 1},
+      {"type": "starting_length_delta", "amount": 1}
+    ]
+  },
+  {
+    "id": "tail_heat_sink",
+    "name": "Heat Sink Tail",
+    "slot": "tail",
+    "tier": 1,
+    "power_cost": 1,
+    "heat_cost": -1,
+    "tags": ["starter", "heat"],
+    "effects": [{"type": "heat_rate_delta", "amount": -1}]
+  }
+]

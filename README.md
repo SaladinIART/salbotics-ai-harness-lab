@@ -22,8 +22,11 @@ Use the materials here to run a talk, teach a workshop, or improve your own AI w
 
 - Read the [beginner guide](episodes/01-implement-harness-engineering/beginner-guide.md).
 - Try the [worksheet](episodes/01-implement-harness-engineering/worksheet.md).
+- Browse [Episode 2: Lessons From Real Projects](episodes/02-lessons-from-real-projects/README.md).
 - Copy the [harness prompt template](templates/harness-prompt-template.md).
 - Browse the [Episode 1 deck files](episodes/01-implement-harness-engineering/README.md).
+- Try the [Lab 02 Ular CP11 playtest tutorial](labs/02-ular-game-design/tutorial-cp11-playtest.md).
+- Study the [Lab 03 Underdog Racing tutorials](labs/03-underdog-racing/tutorials/README.md).
 - Open the [GitHub Pages site](https://saladiniart.github.io/salbotics-ai-harness-lab/).
 
 ## Episode 1
@@ -37,15 +40,31 @@ Downloads:
 - [Markdown slides](episodes/01-implement-harness-engineering/slides/slides.md)
 - [Speaker notes](episodes/01-implement-harness-engineering/speaker-notes.md)
 
+## Episode 2
+
+**Lessons From Real Projects** turns public-safe Salbotics working habits into tutorials for non-technical builders.
+
+Start with:
+
+- [Episode 2 index](episodes/02-lessons-from-real-projects/README.md)
+- [Public safety map](episodes/02-lessons-from-real-projects/public-safety-map.md)
+- [Tutorial 1: Turn a Vague Idea Into an AI Work Order](episodes/02-lessons-from-real-projects/tutorial-01-ai-work-order.md)
+- [Redaction checklist](episodes/02-lessons-from-real-projects/worksheets/redaction-checklist.md)
+
 ## Templates
 
 - [Harness prompt template](templates/harness-prompt-template.md)
 - [Context pack starter](templates/context-pack-starter.md)
 - [Checkpoint rule](templates/checkpoint-rule.md)
 
-## Future Labs
+## Labs
 
-The next planned lab is [Ular Game Design](labs/02-ular-game-design/README.md), a public-safe rebuild of a small snake-game demo used to teach scoped game design, prompt harnessing, playtest checkpoints, and iteration notes.
+- [Lab 02: Ular Game Design](labs/02-ular-game-design/README.md) now includes two public-safe prototypes:
+  - `cyber-roguelite-prototype`: earlier Python/Pygame checkpoint slice.
+  - `ular-retro-engine`: newer Pyxel CP11 roguelite loop with Lab, modules, hazards, boss, rewards, scrap, and developer mode.
+- [Lab 03: Underdog Racing](labs/03-underdog-racing/README.md) is a Phaser + TypeScript top-down pixel racing prototype through CP7 and post-CP7 polish, with time-trial physics, Garage upgrades, street-to-pro event gates, driver XP, one-rival AI duel, a Street Underdog Cup championship loop, difficulty selection, visible steering tires, and [tutorials about the lessons learned](labs/03-underdog-racing/tutorials/README.md).
+
+Use Lab 02 and Lab 03 to teach how small game ideas can evolve through harnessed checkpoints without losing source attribution, scope boundaries, playtest notes, handoff docs, or the lessons learned along the way.
 
 ## License
 

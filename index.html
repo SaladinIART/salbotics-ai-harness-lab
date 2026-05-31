@@ -217,6 +217,43 @@
         font-weight: 500;
       }
 
+      .path-list,
+      .checkpoint-list {
+        display: grid;
+        gap: 10px;
+        margin: 24px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .path-list li,
+      .checkpoint-list li {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .path-list span,
+      .checkpoint-list span {
+        color: var(--muted);
+      }
+
+      .status {
+        min-width: 82px;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: #e8f6f2;
+        color: #0f766e;
+        font-size: 0.82rem;
+        font-weight: 850;
+        text-align: center;
+      }
+
       .imprint {
         padding: 42px 0 58px;
         color: var(--muted);
@@ -234,6 +271,11 @@
 
         .grid,
         .downloads {
+          grid-template-columns: 1fr;
+        }
+
+        .path-list li,
+        .checkpoint-list li {
           grid-template-columns: 1fr;
         }
 
@@ -276,8 +318,11 @@
           <a class="button" href="episodes/01-implement-harness-engineering/beginner-guide.md">
             Start with the guide
           </a>
-          <a class="button secondary" href="episodes/01-implement-harness-engineering/slides/Implement-Harness-Engineering-Salbotics-Watermarked.pptx">
-            Download the deck
+          <a class="button secondary" href="episodes/02-lessons-from-real-projects/README.md">
+            Browse Episode 2
+          </a>
+          <a class="button secondary" href="labs/03-underdog-racing/tutorials/README.md">
+            Study Underdog lessons
           </a>
         </div>
       </div>
@@ -371,29 +416,171 @@
         </div>
       </section>
 
-      <section id="future-labs">
-        <h2>Future Labs</h2>
+      <section id="episode-2">
+        <h2>Episode 2</h2>
         <p class="section-lede">
-          The next lab will rebuild a small public-safe snake-game demo,
-          "Ular yg Mengular", to teach scope control, playtest checkpoints,
-          and iteration notes.
+          Lessons From Real Projects is a completed public-safe tutorial pack
+          for non-technical builders. It teaches work orders, context packs,
+          checkpoints, testing, and redaction using fake examples only.
         </p>
         <div class="grid">
           <article class="card">
-            <h3>Lab 02</h3>
-            <p>Use harness engineering to keep a game idea tiny and playable.</p>
-            <a href="labs/02-ular-game-design/README.md">View lab plan</a>
+            <h3>AI Work Orders</h3>
+            <p>Turn a vague idea into a reviewable prompt brief.</p>
+            <a href="episodes/02-lessons-from-real-projects/tutorial-01-ai-work-order.md">Open tutorial</a>
           </article>
           <article class="card">
-            <h3>Prompt Harness</h3>
-            <p>A ready-to-adapt prompt for the future snake-game demo.</p>
-            <a href="labs/02-ular-game-design/prompt-harness.md">Open prompt</a>
+            <h3>Privacy First</h3>
+            <p>Share useful lessons without exposing private project details.</p>
+            <a href="episodes/02-lessons-from-real-projects/public-safety-map.md">Open safety map</a>
           </article>
           <article class="card">
-            <h3>Design Worksheet</h3>
-            <p>Define rules, controls, exclusions, checkpoints, and done.</p>
-            <a href="labs/02-ular-game-design/design-worksheet.md">Open worksheet</a>
+            <h3>Worksheets</h3>
+            <p>Use prompt, checkpoint, redaction, and handoff checklists.</p>
+            <a href="episodes/02-lessons-from-real-projects/README.md">View episode</a>
           </article>
+        </div>
+        <ul class="path-list" aria-label="Episode 2 teaching path">
+          <li>
+            <a href="episodes/02-lessons-from-real-projects/tutorial-01-ai-work-order.md">1. Turn a vague idea into an AI work order</a>
+            <span>Start here</span>
+          </li>
+          <li>
+            <a href="episodes/02-lessons-from-real-projects/tutorial-02-context-packs.md">2. Build a context pack without sharing secrets</a>
+            <span>Memory</span>
+          </li>
+          <li>
+            <a href="episodes/02-lessons-from-real-projects/tutorial-03-checkpoint-rule.md">3. Use checkpoints to stop rabbit holes</a>
+            <span>Control</span>
+          </li>
+          <li>
+            <a href="episodes/02-lessons-from-real-projects/tutorial-04-test-like-a-non-developer.md">4. Test like a non-developer</a>
+            <span>Evidence</span>
+          </li>
+          <li>
+            <a href="episodes/02-lessons-from-real-projects/tutorial-05-public-lessons-private-projects.md">5. Share public lessons from private projects</a>
+            <span>Redaction</span>
+          </li>
+        </ul>
+      </section>
+
+      <section id="episode-2-checkpoints">
+        <h2>Episode 2 Checkpoints</h2>
+        <p class="section-lede">
+          The tutorial pack is finished through CP5. Each checkpoint leaves a
+          master list so future updates do not need to rediscover the context.
+        </p>
+        <ul class="checkpoint-list" aria-label="Episode 2 checkpoint status">
+          <li>
+            <span>CP1 - Public-safety map: allowed themes, forbidden details, privacy checklist.</span>
+            <strong class="status">Done</strong>
+          </li>
+          <li>
+            <span>CP2 - Tutorial architecture: five tutorials, shared template, worksheets.</span>
+            <strong class="status">Done</strong>
+          </li>
+          <li>
+            <span>CP3 - Draft tutorial pack: articles, fake examples, prompt cards, worksheet links.</span>
+            <strong class="status">Done</strong>
+          </li>
+          <li>
+            <span>CP4 - Privacy and quality pass: redaction scan, links, section checks.</span>
+            <strong class="status">Done</strong>
+          </li>
+          <li>
+            <span>CP5 - Publish prep: README, GEMINI handoff, and homepage links.</span>
+            <strong class="status">Done</strong>
+          </li>
+        </ul>
+      </section>
+
+      <section id="labs">
+        <h2>Current Labs</h2>
+        <p class="section-lede">
+          Public-safe game labs show how checkpoints turn ambitious ideas into
+          playable, testable demos without losing scope control, source
+          attribution, or handoff notes.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <h3>Lab 02: Ular</h3>
+            <p>
+              A public-safe snake roguelite lab through Pyxel CP11 with
+              modules, hazards, boss pressure, scrap economy, and developer
+              mode.
+            </p>
+            <a href="labs/02-ular-game-design/tutorial-cp11-playtest.md">Open playtest tutorial</a>
+          </article>
+          <article class="card">
+            <h3>Lab 03: Underdog</h3>
+            <p>
+              A Phaser + TypeScript racing lab with simcade handling, Garage
+              upgrades, rival duels, championship loop, difficulty, and visible
+              steering feedback.
+            </p>
+            <a href="labs/03-underdog-racing/README.md">View racing lab</a>
+          </article>
+          <article class="card">
+            <h3>Underdog Tutorials</h3>
+            <p>
+              Learn the working wisdoms: harness big ideas, build racing feel,
+              tune fair pressure, and test with evidence.
+            </p>
+            <a href="labs/03-underdog-racing/tutorials/README.md">Start tutorial path</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="underdog-lessons">
+        <h2>What Underdog Teaches</h2>
+        <p class="section-lede">
+          The racing exercise is a practical study in making ambition usable.
+          It shows how to move from idea, to scaffold, to physics, to upgrades,
+          to rivals, to championship pressure, while keeping each step testable.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <h3>Feel Before Features</h3>
+            <p>
+              The car had to explain steering, speed, surface, and mistakes
+              before the campaign systems could matter.
+            </p>
+            <a href="labs/03-underdog-racing/tutorials/tutorial-02-racing-feel-before-features.md">Read the lesson</a>
+          </article>
+          <article class="card">
+            <h3>Fair Pressure</h3>
+            <p>
+              Difficulty became a visible, saved, testable choice instead of a
+              hidden punishment.
+            </p>
+            <a href="labs/03-underdog-racing/tutorials/tutorial-03-progression-difficulty-fair-pressure.md">Read the lesson</a>
+          </article>
+          <article class="card">
+            <h3>Wisdoms</h3>
+            <p>
+              Big ideas need small doors. Tests need screenshots. Handoffs are
+              part of the product.
+            </p>
+            <a href="labs/03-underdog-racing/tutorials/wisdoms-from-underdog.md">Read the wisdoms</a>
+          </article>
+        </div>
+        <div class="downloads">
+          <a class="download" href="labs/03-underdog-racing/docs/vehicle-difficulty-smoke.png">
+            Vehicle evidence
+            <span>Speed, tires, difficulty</span>
+          </a>
+          <a class="download" href="labs/03-underdog-racing/docs/circuit-smoke.png">
+            Circuit evidence
+            <span>F1-inspired map smoke</span>
+          </a>
+          <a class="download" href="labs/03-underdog-racing/docs/cp7-playtest-checklist.md">
+            CP7 checklist
+            <span>Championship playtest</span>
+          </a>
+          <a class="download" href="labs/03-underdog-racing/docs/cp2-cp3-smoke-notes.md">
+            Smoke notes
+            <span>Run, test, verify</span>
+          </a>
         </div>
       </section>
 
