@@ -79,6 +79,26 @@ Current Episode 2 files:
 - `tutorial-01` through `tutorial-05`: work order, context packs, checkpoint rule, testing, and public lessons.
 - `worksheets/`: prompt brief, redaction checklist, checkpoint review, and handoff checklist.
 
+## Episode 3 Continuation Notes
+
+Episode 3 is `episodes/03-programming-language-swot/`.
+
+It teaches programming language applications and SWOT for students planning
+5-10 years ahead. Keep it public-safe and student-focused. The core message is:
+do not learn every language equally; learn a practical stack first, then
+specialize based on project needs.
+
+Current Episode 3 files:
+
+- `README.md`: module overview, language groups, sources, and exercise
+  placeholder.
+- `language-swot-report.md`: full student programming language applications
+  and SWOT report.
+
+Next safe work: design practical exercises that test whether learners can match
+project needs to language functionality and justify choices through SWOT plus
+the harness formula.
+
 ## Lab 02 Current State
 
 Lab 02 is now implemented as a public-safe rebuild inspired by "Ular yg
@@ -155,6 +175,11 @@ Master list: Underdog tutorial index, 4 tutorials, wisdoms page, Lab 03 README
 links, labs index link, root README link, homepage sections for current labs and
 Underdog lessons.
 
+Checkpoint 8: Episode 3 language SWOT
+Master list: episodes/03-programming-language-swot, full language SWOT report,
+root README link, homepage Episode 3 section, exercise placeholder for future
+classroom activities.
+
 ## Recommended Model
 
 For future major planning or rewrite work, use `gpt-5.4` with high reasoning.
@@ -168,3 +193,4 @@ Estimated token ranges:
 - Future Ular lab planning: 4k-8k
 - Episode 2 public tutorial pack: 25k-45k drafting, 8k-15k review
 - Lab 03 learning layer: 8k-14k drafting, 3k-6k review
+- Episode 3 exercise design: 8k-14k planning, 4k-8k worksheet drafting
