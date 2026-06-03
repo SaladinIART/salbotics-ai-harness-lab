@@ -23,7 +23,7 @@ Use the materials here to run a talk, teach a workshop, or improve your own AI w
 - Read the [beginner guide](episodes/01-implement-harness-engineering/beginner-guide.md).
 - Try the [worksheet](episodes/01-implement-harness-engineering/worksheet.md).
 - Browse [Episode 2: Lessons From Real Projects](episodes/02-lessons-from-real-projects/README.md).
-- Explore [Episode 3: Programming Language SWOT](episodes/03-programming-language-swot/README.md).
+- Explore [Episode 3: Programming Language SWOT](episodes/03-programming-language-swot/index.html).
 - Copy the [harness prompt template](templates/harness-prompt-template.md).
 - Browse the [Episode 1 deck files](episodes/01-implement-harness-engineering/README.md).
 - Try the [Lab 02 Ular CP11 playtest tutorial](labs/02-ular-game-design/tutorial-cp11-playtest.md).
@@ -59,7 +59,8 @@ application, student benefit, 5-10 year outlook, and practical tradeoffs.
 
 Start with:
 
-- [Episode 3 index](episodes/03-programming-language-swot/README.md)
+- [Episode 3 landing page](episodes/03-programming-language-swot/index.html)
+- [Episode 3 source notes](episodes/03-programming-language-swot/README.md)
 - [Full language SWOT report](episodes/03-programming-language-swot/language-swot-report.md)
 
 ## Templates

@@ -90,6 +90,7 @@ specialize based on project needs.
 
 Current Episode 3 files:
 
+- `index.html`: public landing page for GitHub Pages.
 - `README.md`: module overview, language groups, sources, and exercise
   placeholder.
 - `language-swot-report.md`: full student programming language applications
