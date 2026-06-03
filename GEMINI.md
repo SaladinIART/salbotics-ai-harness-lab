@@ -83,22 +83,25 @@ Current Episode 2 files:
 
 Episode 3 is `episodes/03-programming-language-swot/`.
 
-It teaches programming language applications and SWOT for students planning
-5-10 years ahead. Keep it public-safe and student-focused. The core message is:
-do not learn every language equally; learn a practical stack first, then
-specialize based on project needs.
+It teaches programming language applications and SWOT for non-technical AI
+explorers, students, and people lost in AI rabbit holes. Keep it public-safe,
+layman-friendly, and not childish. The core message is: do not learn every
+language equally; learn what each language is for, start with a practical stack,
+then specialize based on project needs.
 
 Current Episode 3 files:
 
 - `index.html`: public landing page for GitHub Pages.
 - `README.md`: module overview, language groups, sources, and exercise
-  placeholder.
-- `language-swot-report.md`: full student programming language applications
-  and SWOT report.
+  pointer.
+- `language-swot-report.html`: polished 45-minute lecture guide with chapters,
+  visual map, 25 simplified SWOT cards, free learning links, exercises, and
+  examples.
+- `language-swot-report.md`: Markdown source notes preserving full context,
+  language list, appendix groups, resource links, exercises, and answer samples.
 
-Next safe work: design practical exercises that test whether learners can match
-project needs to language functionality and justify choices through SWOT plus
-the harness formula.
+Next safe work: deepen exercises into printable worksheets or facilitator notes
+without adding paid links or private project detail.
 
 ## Lab 02 Current State
 

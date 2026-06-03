@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Programming Languages For AI Explorers</title>
+    <meta
+      name="description"
+      content="A layman-friendly guide to programming languages for non-technical AI explorers who want stronger fundamentals."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #102820;
+        --muted: #48615b;
+        --paper: #f6f7f2;
+        --panel: #ffffff;
+        --soft: #eef6f3;
+        --line: #d9e0d8;
+        --teal: #2a9d8f;
+        --amber: #e9c46a;
+        --coral: #e76f51;
+        --blue: #457b9d;
+        --violet: #6b5ca5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.58;
+      }
+
+      a {
+        color: #0f766e;
+        font-weight: 800;
+        text-underline-offset: 0.18em;
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      aside {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: auto;
+        padding: 24px 18px;
+        border-right: 1px solid var(--line);
+        background: #ffffff;
+      }
+
+      .brand {
+        margin-bottom: 20px;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 1.02rem;
+      }
+
+      .brand span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      nav {
+        display: grid;
+        gap: 6px;
+      }
+
+      nav a {
+        padding: 7px 9px;
+        border-radius: 8px;
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 0.92rem;
+      }
+
+      nav a:hover,
+      nav a:focus-visible {
+        background: var(--soft);
+        color: #0f766e;
+        outline: none;
+      }
+
+      main {
+        min-width: 0;
+      }
+
+      .hero {
+        padding: 48px clamp(18px, 5vw, 64px);
+        background: #102820;
+        color: #ffffff;
+      }
+
+      .hero-inner,
+      .content {
+        width: min(1120px, 100%);
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        color: #d9fff4;
+        font-size: 0.84rem;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 980px;
+        margin-bottom: 18px;
+        font-size: clamp(2.25rem, 6vw, 5.2rem);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin-bottom: 14px;
+        font-size: clamp(1.55rem, 3.2vw, 2.45rem);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin-bottom: 8px;
+        font-size: 1.08rem;
+      }
+
+      .hero p {
+        max-width: 820px;
+        color: #ecf8f4;
+        font-size: 1.12rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 14px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background: var(--amber);
+        color: #102820;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        border-color: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+      }
+
+      .content {
+        padding: 34px clamp(18px, 5vw, 64px) 58px;
+      }
+
+      section {
+        padding: 34px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .lede {
+        max-width: 820px;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .callout {
+        margin-top: 18px;
+        padding: 16px 18px;
+        border-left: 6px solid var(--amber);
+        background: #fff9e6;
+        font-weight: 750;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .two-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .card {
+        min-height: 162px;
+        padding: 17px;
+        border: 1px solid var(--line);
+        border-top: 6px solid var(--teal);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .card:nth-child(2n) {
+        border-top-color: var(--blue);
+      }
+
+      .card:nth-child(3n) {
+        border-top-color: var(--coral);
+      }
+
+      .card:nth-child(4n) {
+        border-top-color: var(--violet);
+      }
+
+      .card p,
+      .card li,
+      td,
+      .note {
+        color: var(--muted);
+      }
+
+      .card ul,
+      .card ol {
+        margin: 8px 0 0;
+        padding-left: 20px;
+      }
+
+      .map {
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .map svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #ffffff;
+      }
+
+      .table-wrap {
+        margin-top: 18px;
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      table {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 11px 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #edf6f4;
+        color: var(--ink);
+      }
+
+      td:first-child {
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .language-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .language-card {
+        display: grid;
+        gap: 10px;
+        min-height: 320px;
+      }
+
+      .language-card .meta {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .swot {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .swot div {
+        padding: 10px;
+        border-radius: 8px;
+        background: #f6faf8;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      .swot strong {
+        display: block;
+        color: var(--ink);
+      }
+
+      pre {
+        overflow-x: auto;
+        padding: 14px;
+        border-radius: 8px;
+        background: #142b23;
+        color: #ecf8f4;
+      }
+
+      code {
+        font-family:
+          "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      footer {
+        padding: 30px clamp(18px, 5vw, 64px) 50px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 980px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+
+        aside {
+          position: static;
+          height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        nav {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid,
+        .two-grid,
+        .language-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 580px) {
+        nav {
+          grid-template-columns: 1fr;
+        }
+
+        .swot {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <aside>
+        <div class="brand">
+          <strong>Episode 3</strong>
+          <span>Programming Languages For AI Explorers</span>
+        </div>
+        <nav aria-label="Guide sections">
+          <a href="#why-lost">Why People Get Lost</a>
+          <a href="#plain-meaning">Plain Meaning</a>
+          <a href="#families">Language Families</a>
+          <a href="#core-stack">Core Stack</a>
+          <a href="#sources">Sources</a>
+          <a href="#swot-cards">25 SWOT Cards</a>
+          <a href="#learning-path">Learning Path</a>
+          <a href="#resources">Learning Links</a>
+          <a href="#exercises">Exercises</a>
+        </nav>
+      </aside>
+
+      <main>
+        <header class="hero">
+          <div class="hero-inner">
+            <span class="eyebrow">Salbotics AI Harness Lab</span>
+            <h1>Programming Languages For AI Explorers</h1>
+            <p>
+              A layman-friendly guide for people who use AI, get handed code,
+              then fall into errors, frameworks, terminal commands, and files
+              they cannot explain yet.
+            </p>
+            <div class="actions">
+              <a class="button" href="#exercises">Start exercises</a>
+              <a class="button secondary" href="language-swot-report.md">Open Markdown notes</a>
+              <a class="button secondary" href="../../index.html">Back to Harness Lab</a>
+            </div>
+          </div>
+        </header>
+
+        <div class="content">
+          <section id="why-lost">
+            <h2>1. Why AI Users Get Lost</h2>
+            <p class="lede">
+              AI can write code faster than a beginner can read it. That speed
+              feels magical until the project grows into packages, frameworks,
+              terminal errors, and mystery files.
+            </p>
+            <div class="grid">
+              <article class="card">
+                <h3>Usual rabbit hole</h3>
+                <p>You ask for a simple app. AI adds a framework, packages, database, Docker, cloud deploy, and new errors.</p>
+              </article>
+              <article class="card">
+                <h3>Real problem</h3>
+                <p>You do not yet know which language does which job, so every suggestion sounds equally valid.</p>
+              </article>
+              <article class="card">
+                <h3>Way out</h3>
+                <p>Learn language function before language fashion. Ask: best for what job?</p>
+              </article>
+            </div>
+            <div class="callout">
+              Harness question: what is the smallest working result that proves
+              this language choice is helping, not distracting?
+            </div>
+          </section>
+
+          <section id="plain-meaning">
+            <h2>2. What Programming Languages Mean In Plain English</h2>
+            <div class="two-grid">
+              <article class="card">
+                <h3>Language = instruction style</h3>
+                <p>A programming language is a way to give instructions to a computer. Different languages exist because different jobs need different tradeoffs.</p>
+              </article>
+              <article class="card">
+                <h3>Stack = tools working together</h3>
+                <p>A project often uses multiple languages: HTML for page structure, CSS for appearance, JavaScript for behavior, SQL for data, Python for AI work.</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="families">
+            <h2>3. Language Families By Job, Not Hype</h2>
+            <p class="lede">This map groups languages by what they help you do.</p>
+            <div class="card map">
+              <svg viewBox="0 0 960 430" role="img" aria-labelledby="map-title map-desc">
+                <title id="map-title">Programming language family map</title>
+                <desc id="map-desc">AI, web, backend, systems, mobile, research, and specialist language groups.</desc>
+                <rect width="960" height="430" fill="#ffffff" />
+                <g font-family="Inter, Arial, sans-serif">
+                  <text x="42" y="48" font-size="24" font-weight="800" fill="#102820">Pick by job</text>
+                  <text x="42" y="76" font-size="15" fill="#48615b">If the job changes, the useful language may change too.</text>
+                  <g transform="translate(42,116)">
+                    <rect width="260" height="96" rx="8" fill="#eef6f3" stroke="#2a9d8f" />
+                    <text x="16" y="30" font-size="17" font-weight="800" fill="#0f766e">AI + Automation</text>
+                    <text x="16" y="58" font-size="14" fill="#102820">Python, SQL, Bash</text>
+                    <text x="16" y="78" font-size="12" fill="#48615b">data, scripts, workflows</text>
+                  </g>
+                  <g transform="translate(350,116)">
+                    <rect width="260" height="96" rx="8" fill="#edf4f9" stroke="#457b9d" />
+                    <text x="16" y="30" font-size="17" font-weight="800" fill="#285f82">Web + Product</text>
+                    <text x="16" y="58" font-size="14" fill="#102820">HTML/CSS, JS, TS</text>
+                    <text x="16" y="78" font-size="12" fill="#48615b">pages, dashboards, app UI</text>
+                  </g>
+                  <g transform="translate(658,116)">
+                    <rect width="260" height="96" rx="8" fill="#fff9e6" stroke="#e9c46a" />
+                    <text x="16" y="30" font-size="17" font-weight="800" fill="#8a5f00">Backend + Business</text>
+                    <text x="16" y="58" font-size="14" fill="#102820">Java, C#, Go, PHP</text>
+                    <text x="16" y="78" font-size="12" fill="#48615b">APIs, records, rules</text>
+                  </g>
+                  <g transform="translate(42,254)">
+                    <rect width="260" height="96" rx="8" fill="#fff0eb" stroke="#e76f51" />
+                    <text x="16" y="30" font-size="17" font-weight="800" fill="#b9482f">Systems + Hardware</text>
+                    <text x="16" y="58" font-size="14" fill="#102820">C, C++, Rust, Zig</text>
+                    <text x="16" y="78" font-size="12" fill="#48615b">speed, memory, devices</text>
+                  </g>
+                  <g transform="translate(350,254)">
+                    <rect width="260" height="96" rx="8" fill="#f1f0fa" stroke="#6b5ca5" />
+                    <text x="16" y="30" font-size="17" font-weight="800" fill="#5b4a93">Mobile + Apps</text>
+                    <text x="16" y="58" font-size="14" fill="#102820">Kotlin, Swift, Dart</text>
+                    <text x="16" y="78" font-size="12" fill="#48615b">Android, iOS, Flutter</text>
+                  </g>
+                  <g transform="translate(658,254)">
+                    <rect width="260" height="96" rx="8" fill="#f7f8f2" stroke="#a6b26b" />
+                    <text x="16" y="30" font-size="17" font-weight="800" fill="#68772d">Research + Niche</text>
+                    <text x="16" y="58" font-size="14" fill="#102820">R, MATLAB, Julia, Lua...</text>
+                    <text x="16" y="78" font-size="12" fill="#48615b">stats, games, realtime, chain</text>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </section>
+
+          <section id="core-stack">
+            <h2>4. Core Stack For AI Explorers</h2>
+            <p class="lede">Start with tools that help you understand most AI-generated demo apps.</p>
+            <div class="grid">
+              <article class="card"><h3>Python</h3><p>AI, data, automation, API calls, small helpers.</p></article>
+              <article class="card"><h3>HTML/CSS/JavaScript</h3><p>Pages, layout, interactivity, visible app surfaces.</p></article>
+              <article class="card"><h3>TypeScript</h3><p>Safer JavaScript when web projects become serious.</p></article>
+              <article class="card"><h3>SQL</h3><p>Questions from data, dashboards, app records.</p></article>
+              <article class="card"><h3>Bash/Shell</h3><p>Commands, scripts, folders, deployment basics.</p></article>
+              <article class="card"><h3>Git/GitHub</h3><p>Save work, compare changes, share proof.</p></article>
+            </div>
+          </section>
+
+          <section id="sources">
+            <h2>5. Sources And Caveats</h2>
+            <p class="lede">
+              Rankings are signals, not commandments. They help us notice
+              demand and ecosystem strength, but your project, local market,
+              learning style, and portfolio still matter.
+            </p>
+            <div class="grid">
+              <article class="card">
+                <h3>Stack Overflow Survey</h3>
+                <p>Useful for seeing what developers report using, including web, database, scripting, and AI-tool trends.</p>
+                <a href="https://survey.stackoverflow.co/2025/">Open source</a>
+              </article>
+              <article class="card">
+                <h3>GitHub Octoverse</h3>
+                <p>Useful for repository contribution trends, including TypeScript growth and Python's AI/data role.</p>
+                <a href="https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/">Open source</a>
+              </article>
+              <article class="card">
+                <h3>TIOBE + PYPL</h3>
+                <p>Useful as search/popularity signals. Treat them as rough weather reports, not final life advice.</p>
+                <a href="https://www.tiobe.com/tiobe-index/">TIOBE</a>
+                <span class="note"> | </span>
+                <a href="https://pypl.github.io/PYPL.html?country=US">PYPL</a>
+              </article>
+            </div>
+          </section>
+
+          <section>
+            <h2>6. Quick Priority Map</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Language</th><th>Main use</th><th>Priority</th><th>Future signal</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Python</td><td>AI, data, automation</td><td>Must learn</td><td>Very strong</td></tr>
+                  <tr><td>TypeScript</td><td>Serious web apps, AI UI</td><td>Must learn after JS</td><td>Very strong</td></tr>
+                  <tr><td>JavaScript</td><td>Browser behavior</td><td>Must learn</td><td>Strong</td></tr>
+                  <tr><td>SQL</td><td>Databases and reporting</td><td>Must learn</td><td>Very strong</td></tr>
+                  <tr><td>HTML/CSS</td><td>Web structure and appearance</td><td>Must learn</td><td>Stable</td></tr>
+                  <tr><td>Bash/Shell</td><td>Command line and automation</td><td>High</td><td>Strong support</td></tr>
+                  <tr><td>Java/C#/Go</td><td>Backend and business systems</td><td>Choose one later</td><td>Strong</td></tr>
+                  <tr><td>C/C++/Rust/Zig</td><td>Systems and performance</td><td>Specialize</td><td>Durable/selective</td></tr>
+                  <tr><td>Kotlin/Swift/Dart</td><td>Mobile apps</td><td>Track-specific</td><td>Strong niches</td></tr>
+                  <tr><td>R/MATLAB/Julia/Scala</td><td>Research, engineering, data</td><td>Track-specific</td><td>Specialist</td></tr>
+                  <tr><td>Ruby/Lua/Elixir/Solidity</td><td>Rails, games, realtime, blockchain</td><td>Specialist</td><td>Niche</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="swot-cards">
+            <h2>7. 25 Plain-Language SWOT Cards</h2>
+            <p class="lede">Every card keeps the original meaning: use, benefit, tradeoff, opportunity, and risk.</p>
+            <div class="language-grid">
+              <article class="card language-card">
+                <h3>1. Python</h3>
+                <p class="meta">Friendly toolbox for AI, data, automation, scripts, APIs, research, and quick prototypes.</p>
+                <div class="swot"><div><strong>Strength</strong>Easy to read, huge AI/data ecosystem.</div><div><strong>Weakness</strong>Slower runtime, packaging can confuse.</div><div><strong>Opportunity</strong>AI helpers, automation, data workflows.</div><div><strong>Threat</strong>Simple scripts become easy for AI to generate.</div></div>
+                <p class="note">Learn first if exploring AI.</p>
+              </article>
+              <article class="card language-card">
+                <h3>2. TypeScript</h3>
+                <p class="meta">JavaScript with safety rails for serious web apps, dashboards, APIs, and AI product interfaces.</p>
+                <div class="swot"><div><strong>Strength</strong>Types make data shape clearer.</div><div><strong>Weakness</strong>Setup/tooling can feel heavy.</div><div><strong>Opportunity</strong>Safer AI-generated web apps.</div><div><strong>Threat</strong>Framework churn.</div></div>
+                <p class="note">Learn after JavaScript basics.</p>
+              </article>
+              <article class="card language-card">
+                <h3>3. JavaScript</h3>
+                <p class="meta">Browser language for clicks, forms, animation, dynamic pages, Node.js, and web automation.</p>
+                <div class="swot"><div><strong>Strength</strong>Runs everywhere on the web.</div><div><strong>Weakness</strong>Dynamic quirks and dependency overload.</div><div><strong>Opportunity</strong>Dashboards, AI interfaces, browser tools.</div><div><strong>Threat</strong>Large projects prefer TypeScript.</div></div>
+                <p class="note">Must know for web understanding.</p>
+              </article>
+              <article class="card language-card">
+                <h3>4. SQL</h3>
+                <p class="meta">Language for asking structured questions from databases, reports, analytics, and app records.</p>
+                <div class="swot"><div><strong>Strength</strong>Universal data skill.</div><div><strong>Weakness</strong>Dialects and performance traps.</div><div><strong>Opportunity</strong>Dashboards, analytics, AI evaluation.</div><div><strong>Threat</strong>Tools may hide SQL but not data thinking.</div></div>
+                <p class="note">Must learn for any serious app or AI data work.</p>
+              </article>
+              <article class="card language-card">
+                <h3>5. HTML/CSS</h3>
+                <p class="meta">HTML structures pages. CSS controls appearance, layout, responsiveness, and accessibility.</p>
+                <div class="swot"><div><strong>Strength</strong>Immediate visual feedback.</div><div><strong>Weakness</strong>Not full programming alone.</div><div><strong>Opportunity</strong>Portfolios, guides, dashboards.</div><div><strong>Threat</strong>Basic pages are easy for AI/builders.</div></div>
+                <p class="note">Build one page by hand before frameworks.</p>
+              </article>
+              <article class="card language-card">
+                <h3>6. Bash/Shell</h3>
+                <p class="meta">Command language for files, folders, scripts, build steps, servers, and deployment basics.</p>
+                <div class="swot"><div><strong>Strength</strong>Great for small glue tasks.</div><div><strong>Weakness</strong>Error handling is tricky.</div><div><strong>Opportunity</strong>CI/CD, server automation, AI eval scripts.</div><div><strong>Threat</strong>Python/Go replace bigger scripts.</div></div>
+                <p class="note">Learn enough to stop blind terminal copy-paste.</p>
+              </article>
+              <article class="card language-card"><h3>7. Java</h3><p class="meta">Long-lived business-system language for enterprise backends, finance, government, APIs, and Android legacy.</p><div class="swot"><div><strong>Strength</strong>Mature and stable at scale.</div><div><strong>Weakness</strong>Verbose for beginners.</div><div><strong>Opportunity</strong>Enterprise AI integration.</div><div><strong>Threat</strong>Kotlin, Go, TypeScript, Python for greenfield work.</div></div><p class="note">Learn for corporate/backend paths.</p></article>
+              <article class="card language-card"><h3>8. C#</h3><p class="meta">Microsoft/.NET language for enterprise apps, Windows tools, Azure services, and Unity-style games.</p><div class="swot"><div><strong>Strength</strong>Productive, typed, strong tooling.</div><div><strong>Weakness</strong>Best value inside Microsoft ecosystem.</div><div><strong>Opportunity</strong>Business apps, cloud, games.</div><div><strong>Threat</strong>Other stacks dominate some regions.</div></div><p class="note">Learn for .NET, Azure, Windows, or Unity.</p></article>
+              <article class="card language-card"><h3>9. C++</h3><p class="meta">Performance and control language for game engines, robotics, AI runtimes, browsers, databases, and simulation.</p><div class="swot"><div><strong>Strength</strong>Very fast, hardware-close.</div><div><strong>Weakness</strong>Complex and unsafe by default.</div><div><strong>Opportunity</strong>Robotics, games, inference, engines.</div><div><strong>Threat</strong>Rust and safer C++ styles.</div></div><p class="note">Specialize when performance matters.</p></article>
+              <article class="card language-card"><h3>10. C</h3><p class="meta">Foundational hardware-close language for firmware, operating systems, drivers, microcontrollers, and security.</p><div class="swot"><div><strong>Strength</strong>Small, portable, close to machine.</div><div><strong>Weakness</strong>Manual memory mistakes.</div><div><strong>Opportunity</strong>Embedded, IoT, OS, security.</div><div><strong>Threat</strong>Rust, Zig, safer standards.</div></div><p class="note">Learn for fundamentals or embedded work.</p></article>
+              <article class="card language-card"><h3>11. Go</h3><p class="meta">Simple server language for cloud services, APIs, infrastructure tools, networking, CLIs, and Kubernetes ecosystem.</p><div class="swot"><div><strong>Strength</strong>Simple, fast builds, easy deployment.</div><div><strong>Weakness</strong>Less expressive; repetitive errors.</div><div><strong>Opportunity</strong>Platform engineering and cloud APIs.</div><div><strong>Threat</strong>Rust/Python/TypeScript in nearby spaces.</div></div><p class="note">Learn if cloud/platform work attracts you.</p></article>
+              <article class="card language-card"><h3>12. Rust</h3><p class="meta">Safe-performance language for systems, security-sensitive tools, infrastructure, WebAssembly, and embedded work.</p><div class="swot"><div><strong>Strength</strong>Memory safety without GC.</div><div><strong>Weakness</strong>Steep learning curve.</div><div><strong>Opportunity</strong>Secure systems and AI tooling internals.</div><div><strong>Threat</strong>C++ remains entrenched.</div></div><p class="note">Learn later for systems/security.</p></article>
+              <article class="card language-card"><h3>13. PHP</h3><p class="meta">Practical web language for WordPress, Laravel, content management, and small business systems.</p><div class="swot"><div><strong>Strength</strong>Easy hosting, huge installed base.</div><div><strong>Weakness</strong>Legacy quality varies.</div><div><strong>Opportunity</strong>Freelance and CMS work.</div><div><strong>Threat</strong>New apps choose other stacks.</div></div><p class="note">Learn when maintaining PHP sites.</p></article>
+              <article class="card language-card"><h3>14. Kotlin</h3><p class="meta">Modern Android/JVM language for mobile apps, backend services, and some multiplatform apps.</p><div class="swot"><div><strong>Strength</strong>Concise, type-safe, Java interop.</div><div><strong>Weakness</strong>Smaller than Java.</div><div><strong>Opportunity</strong>Android and JVM modernization.</div><div><strong>Threat</strong>Flutter, React Native, Swift.</div></div><p class="note">Learn for Android path.</p></article>
+              <article class="card language-card"><h3>15. Swift</h3><p class="meta">Apple app language for iOS, macOS, watchOS, and Apple ecosystem features.</p><div class="swot"><div><strong>Strength</strong>Modern, strong Apple tooling.</div><div><strong>Weakness</strong>Apple-focused.</div><div><strong>Opportunity</strong>iOS apps and mobile AI features.</div><div><strong>Threat</strong>Cross-platform tools.</div></div><p class="note">Learn for Apple app work.</p></article>
+              <article class="card language-card"><h3>16. R</h3><p class="meta">Statistics and research language for analysis, visualization, epidemiology, academia, and reports.</p><div class="swot"><div><strong>Strength</strong>Excellent statistics ecosystem.</div><div><strong>Weakness</strong>Less common for production apps.</div><div><strong>Opportunity</strong>Health, research, reproducible reports.</div><div><strong>Threat</strong>Python dominates many ML workflows.</div></div><p class="note">Learn for research/statistics domains.</p></article>
+              <article class="card language-card"><h3>17. MATLAB</h3><p class="meta">Engineering math tool for simulation, controls, signal processing, numerical computing, and labs.</p><div class="swot"><div><strong>Strength</strong>Strong engineering toolboxes.</div><div><strong>Weakness</strong>Proprietary and costly.</div><div><strong>Opportunity</strong>Controls and simulation.</div><div><strong>Threat</strong>Python/Julia/open-source alternatives.</div></div><p class="note">Learn if course/lab uses it.</p></article>
+              <article class="card language-card"><h3>18. Julia</h3><p class="meta">Scientific language aiming for readable high-performance numerical code, optimization, and simulation.</p><div class="swot"><div><strong>Strength</strong>Fast numerical code.</div><div><strong>Weakness</strong>Small market/ecosystem.</div><div><strong>Opportunity</strong>Scientific ML and optimization.</div><div><strong>Threat</strong>Python ecosystem gravity.</div></div><p class="note">Learn for scientific computing niche.</p></article>
+              <article class="card language-card"><h3>19. Scala</h3><p class="meta">Advanced JVM language for data engineering, functional programming, and distributed data platforms.</p><div class="swot"><div><strong>Strength</strong>Powerful types and JVM access.</div><div><strong>Weakness</strong>Complex and niche.</div><div><strong>Opportunity</strong>Data platforms and high-scale systems.</div><div><strong>Threat</strong>Java, Kotlin, Python, SQL tools.</div></div><p class="note">Learn only if Spark/JVM data path needs it.</p></article>
+              <article class="card language-card"><h3>20. Ruby</h3><p class="meta">Friendly language known for Rails, startups, internal tools, scripting, and legacy SaaS apps.</p><div class="swot"><div><strong>Strength</strong>Elegant and fast for MVPs.</div><div><strong>Weakness</strong>Smaller new-project share.</div><div><strong>Opportunity</strong>Rails maintenance and rapid products.</div><div><strong>Threat</strong>TypeScript, Python, Go, no-code.</div></div><p class="note">Learn if you inherit Rails or love prototypes.</p></article>
+              <article class="card language-card"><h3>21. Dart</h3><p class="meta">Flutter language for cross-platform mobile, desktop, and web-style app projects.</p><div class="swot"><div><strong>Strength</strong>Productive Flutter UI.</div><div><strong>Weakness</strong>Tied mostly to Flutter.</div><div><strong>Opportunity</strong>Mobile MVPs.</div><div><strong>Threat</strong>Kotlin/Swift/React Native.</div></div><p class="note">Learn if choosing Flutter.</p></article>
+              <article class="card language-card"><h3>22. Lua</h3><p class="meta">Small embeddable scripting language for games, tools, Roblox/Luau, plugins, and configs.</p><div class="swot"><div><strong>Strength</strong>Tiny, fast, easy to embed.</div><div><strong>Weakness</strong>Small standalone job market.</div><div><strong>Opportunity</strong>Games, modding, tools.</div><div><strong>Threat</strong>Engines choose other scripting languages.</div></div><p class="note">Learn when platform uses it.</p></article>
+              <article class="card language-card"><h3>23. Elixir</h3><p class="meta">Realtime and fault-tolerant language for messaging, distributed systems, and Phoenix web apps.</p><div class="swot"><div><strong>Strength</strong>Concurrency and reliability.</div><div><strong>Weakness</strong>Small market.</div><div><strong>Opportunity</strong>Realtime systems and reliable services.</div><div><strong>Threat</strong>Go, Java, TypeScript, cloud services.</div></div><p class="note">Learn later for realtime/reliable systems.</p></article>
+              <article class="card language-card"><h3>24. Zig</h3><p class="meta">Emerging systems language focused on simplicity, C interop, embedded tools, and performance utilities.</p><div class="swot"><div><strong>Strength</strong>Explicit control, promising tooling.</div><div><strong>Weakness</strong>Young ecosystem.</div><div><strong>Opportunity</strong>C alternative experiments.</div><div><strong>Threat</strong>Rust/C/C++ hiring dominance.</div></div><p class="note">Watch later, not first bet.</p></article>
+              <article class="card language-card"><h3>25. Solidity</h3><p class="meta">Smart contract language for Ethereum-style blockchain programs, DeFi, and on-chain protocols.</p><div class="swot"><div><strong>Strength</strong>Specialized finance/security skill.</div><div><strong>Weakness</strong>Costly mistakes and narrow market.</div><div><strong>Opportunity</strong>Audits, protocols, blockchain infra.</div><div><strong>Threat</strong>Regulation, hacks, market cycles.</div></div><p class="note">Learn only after fundamentals and security.</p></article>
+            </div>
+          </section>
+
+          <section>
+            <h2>8. Niche, Legacy, And Adjacent Tools</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Group</th><th>Examples</th><th>Layman advice</th></tr></thead>
+                <tbody>
+                  <tr><td>Legacy maintenance</td><td>COBOL, Fortran, Perl, VBA, Delphi, Groovy</td><td>Do not learn first. Learn if your workplace or project already uses them.</td></tr>
+                  <tr><td>Functional/academic</td><td>Haskell, OCaml, F#, Clojure, Lisp/Scheme, Prolog, Erlang</td><td>Great for deeper thinking, but not first career stack for most readers.</td></tr>
+                  <tr><td>Infra/config/data</td><td>PowerShell, HCL, YAML, JSON, TOML</td><td>Not always "programming languages," but vital for real AI/web/cloud work.</td></tr>
+                  <tr><td>Education/emerging</td><td>Scratch, Mojo, Gleam, Odin, V</td><td>Useful for learning or monitoring, not core first stack.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="learning-path">
+            <h2>9. Learning Path For Non-Technical AI Users</h2>
+            <div class="grid">
+              <article class="card"><h3>Stage 1: Stop Copy-Paste Panic</h3><p>Learn files, folders, command line basics, Markdown, Git basics, HTML/CSS, and how to read errors.</p></article>
+              <article class="card"><h3>Stage 2: Build Small Visible Things</h3><p>Make one Python script, one web page, one JavaScript interaction, and one SQL query.</p></article>
+              <article class="card"><h3>Stage 3: Use AI With Checkpoints</h3><p>After each AI step, ask what changed, what remains, what risk exists, and what to inspect next.</p></article>
+              <article class="card"><h3>Stage 4: Choose A Track</h3><p>AI tools, web/product, backend, robotics, data/research, or mobile. Add languages only when the track needs them.</p></article>
+            </div>
+            <pre><code>Before continuing, summarize:
+1. What changed
+2. What remains
+3. What risk or uncertainty exists
+4. What exact file or command should I inspect next</code></pre>
+          </section>
+
+          <section id="resources">
+            <h2>10. Free Formal Learning Links</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Resource</th><th>Best for</th><th>Link</th></tr></thead>
+                <tbody>
+                  <tr><td>freeCodeCamp</td><td>Free project-based coding curriculum.</td><td><a href="https://www.freecodecamp.org/">Open</a></td></tr>
+                  <tr><td>MDN Learn Web Development</td><td>HTML, CSS, JavaScript, web fundamentals.</td><td><a href="https://developer.mozilla.org/en-US/docs/Learn">Open</a></td></tr>
+                  <tr><td>CS50x 2026</td><td>Broad computer science fundamentals.</td><td><a href="https://cs50.harvard.edu/x">Open</a></td></tr>
+                  <tr><td>Python Beginner's Guide</td><td>Python starting points.</td><td><a href="https://wiki.python.org/moin/BeginnersGuide">Open</a></td></tr>
+                  <tr><td>Python Tutorial</td><td>Official Python tutorial/reference path.</td><td><a href="https://docs.python.org/3/tutorial/">Open</a></td></tr>
+                  <tr><td>SQLBolt</td><td>Interactive SQL lessons.</td><td><a href="https://sqlbolt.com/">Open</a></td></tr>
+                  <tr><td>The Odin Project Foundations</td><td>Structured web development path.</td><td><a href="https://www.theodinproject.com/paths/foundations/courses/foundations">Open</a></td></tr>
+                  <tr><td>Microsoft Learn C#</td><td>Beginner C# and .NET.</td><td><a href="https://dotnet.microsoft.com/en-us/learntocode">Open</a></td></tr>
+                  <tr><td>Exercism</td><td>Practice many languages with exercises.</td><td><a href="https://exercism.org/">Open</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="exercises">
+            <h2>11. Exercises And Examples</h2>
+            <p class="lede">Use these alone or in class. They test understanding without forcing heavy coding.</p>
+            <div class="grid">
+              <article class="card">
+                <h3>Exercise 1: Match Project To Stack</h3>
+                <p>Pick language stack, one reason, one risk.</p>
+                <ul>
+                  <li>AI note summarizer: Python + simple web UI.</li>
+                  <li>Portfolio site: HTML/CSS + JavaScript.</li>
+                  <li>Sales dashboard: SQL + Python or TypeScript.</li>
+                  <li>Factory sensor demo: Python first, C/C++ later if hardware-close.</li>
+                </ul>
+              </article>
+              <article class="card">
+                <h3>Exercise 2: Rabbit Hole Rescue</h3>
+                <p>AI added too many tools. Restate goal, minimum demo, changed files, one proof command, postponed features.</p>
+              </article>
+              <article class="card">
+                <h3>Exercise 3: SWOT Sprint</h3>
+                <p>Pick Python, TypeScript, SQL, C++, or Java/C#/Go. Fill strength, weakness, opportunity, threat, one tiny project.</p>
+              </article>
+            </div>
+            <h3>Rabbit Hole Rescue Example</h3>
+            <pre><code>Goal: make a page where users paste text and get a summary.
+Minimum demo: one local page, one text box, one button, one displayed summary.
+Postpone: login, database, Docker, payments, cloud deploy.
+Language stack: HTML/CSS/JavaScript first; Python backend later if needed.
+Checkpoint: browser page opens and button shows a sample summary.</code></pre>
+            <h3>Learning Path Template</h3>
+            <pre><code>My goal:
+My current level:
+My first language:
+Why this language:
+My second language:
+My first small project:
+My checkpoint after 7 days:
+My checkpoint after 30 days:
+What I will not learn yet:</code></pre>
+          </section>
+
+          <section>
+            <h2>Final Takeaway</h2>
+            <p class="lede">
+              Programming languages are tools, not trophies. Start with
+              Python, web basics, SQL, command line, and Git. Then specialize
+              only when the project needs it.
+            </p>
+          </section>
+        </div>
+
+        <footer>
+          <p><strong>Salbotics Solutions - Built for Real World, Not Textbook.</strong></p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

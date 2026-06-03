@@ -54,14 +54,16 @@ Start with:
 
 ## Episode 3
 
-**Programming Language SWOT** helps students compare programming languages by
-application, student benefit, 5-10 year outlook, and practical tradeoffs.
+**Programming Language SWOT** helps non-technical AI explorers and students
+compare programming languages by application, plain-language purpose,
+AI-workflow usefulness, 5-10 year outlook, and practical tradeoffs.
 
 Start with:
 
 - [Episode 3 landing page](episodes/03-programming-language-swot/index.html)
 - [Episode 3 source notes](episodes/03-programming-language-swot/README.md)
-- [Full language SWOT report](episodes/03-programming-language-swot/language-swot-report.md)
+- [Human-readable full guide](episodes/03-programming-language-swot/language-swot-report.html)
+- [Markdown source notes](episodes/03-programming-language-swot/language-swot-report.md)
 
 ## Templates
 
